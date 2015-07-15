@@ -2,6 +2,7 @@ import argparse
 import os, sys, subprocess, json, re
 
 def run(*args):
+    print("running: " + str(args))
     ret = subprocess.call(args,  stdout=sys.stdout, stderr=sys.stderr)
     if ret != 0:
         exit(ret)
