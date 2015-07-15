@@ -130,7 +130,7 @@ def raw_coverage(use_sudo, test_args, merge_msg, kcov_merge_args, kcov_merge_dir
     # record coverage for each binary
     for binary in test_binaries:
         print('Recording %s' % binary)
-        run(kcov, '--verify --exclude-pattern=/.cargo', 'target/kcov-' + binary,
+        run(kcov, '--verify', '--exclude-pattern=/.cargo', 'target/kcov-' + binary,
             'target/debug/' + binary)
     # merge all the coverages and upload in one go
     print(merge_msg)
