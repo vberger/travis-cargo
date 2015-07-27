@@ -2,7 +2,6 @@ import argparse
 import os, sys, subprocess, json, re
 
 def run(*args):
-    print("running: " + str(args))
     ret = subprocess.call(args,  stdout=sys.stdout, stderr=sys.stderr)
     if ret != 0:
         exit(ret)
@@ -131,7 +130,7 @@ def raw_coverage(use_sudo, test_args, merge_msg, kcov_merge_args, kcov_merge_dir
     # record coverage for each binary
     for binary in test_binaries:
         print('Recording %s' % binary)
-        run(kcov, '--verify', '--debug=15', '--exclude-pattern=/.cargo,rust-buildbot', 'target/kcov-' + binary,
+        run(kcov, '--verify', '--exclude-pattern=/.cargo', 'target/kcov-' + binary,
             'target/debug/' + binary)
     # merge all the coverages and upload in one go
     print(merge_msg)
